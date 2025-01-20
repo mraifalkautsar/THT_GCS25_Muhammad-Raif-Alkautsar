@@ -5,10 +5,12 @@ import { fetchItems, addItem } from '../src/api/items.js';
 const Parent = () => {
   const [items, setItems] = useState([]);
 
+  // ambil item
   useEffect(() => {
     fetchItems().then(setItems);
   }, []);
 
+  // penanganan tambah item
   const handleAddItem = (name, description) => {
     addItem(name, description).then(newItem => {
       setItems(prev => [...prev, newItem]);

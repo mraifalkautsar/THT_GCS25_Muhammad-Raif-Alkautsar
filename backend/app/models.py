@@ -12,4 +12,5 @@ class Item(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String, nullable=False)
     description = Column(String)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    # pakai timezone-aware datetime untuk created_at
+    created_at = Column(DateTime, default=lambda: datetime.datetime.now(datetime.timezone.utc))
